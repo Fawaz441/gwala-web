@@ -1,8 +1,8 @@
 const routes = {
-    PAYMENT_PAGE: "",
-    GROUP_DESCRIPTION: "/details",
-    FLAG_REQUEST: "/flag-request",
-    CONFIRMATION: "/confirmation"
+    PAYMENT_PAGE: "/groups/:groupId",
+    GROUP_DESCRIPTION: "/groups/:groupId/details",
+    FLAG_REQUEST: "/groups/:groupId/flag-request",
+    CONFIRMATION: "/groups/:groupId/confirmation"
 }
 
 export default routes
