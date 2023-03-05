@@ -19,33 +19,33 @@ const EmailInput = ({ proceed, hide }) => {
         <div className='fixed cursor-pointer top-0 left-0 h-screen w-full bg-black/[.6]'
             onClick={hide}
         >
-            <main id="content" role="main" class="w-full max-w-md mx-auto p-6">
+            <main id="content" role="main" className="w-full max-w-md mx-auto p-6">
                 <div
                     onClick={e => e.stopPropagation()}
-                    class="mt-7 bg-white  rounded-xl shadow-lg cursor-default">
-                    <div class="p-4 sm:p-7">
-                        <div class="text-center">
-                            <p class="mt-2 text-xl font-sans800 text-primary">
+                    className="mt-7 bg-white  rounded-xl shadow-lg cursor-default">
+                    <div className="p-4 sm:p-7">
+                        <div className="text-center">
+                            <p className="mt-2 text-xl font-sans800 text-primary">
                                 Please enter in your email to proceed
                             </p>
                         </div>
-                        <div class="mt-5">
+                        <div className="mt-5">
                             <form onSubmit={handleSubmit(onSubmit)}>
-                                <div class="grid gap-y-4">
+                                <div className="grid gap-y-4">
                                     <div>
-                                        <label htmlFor="email" class="block text-sm text-primary font-sans400 ml-1 mb-2">Email address</label>
-                                        <div class="relative">
+                                        <label htmlFor="email" className="block text-sm text-primary font-sans400 ml-1 mb-2">Email address</label>
+                                        <div className="relative">
                                             <input
                                                 autoFocus
                                                 id="email"
                                                 name="email"
-                                                class={getInputClassNames(!!errors.email)}
+                                                className={getInputClassNames(!!errors.email)}
                                                 required aria-describedby="email-error"
                                                 {...register("email", { required: true, validate: v => isEmail(v?.trim()) })}
                                             />
                                         </div>
                                         {!!errors.email &&
-                                            <p class="text-xs text-red-600 mt-2" id="email-error">Please enter a valid email address</p>
+                                            <p className="text-xs text-red-600 mt-2" id="email-error">Please enter a valid email address</p>
                                         }
                                     </div>
                                     <div className='flex items-center justify-center'>

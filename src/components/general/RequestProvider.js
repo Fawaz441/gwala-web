@@ -8,13 +8,13 @@ const RequestProvider = ({ children }) => {
     const [request, setRequest] = useState({})
     const [loadingRequest, setLoadingRequest] = useState(true)
 
-    const getGroupDetails = async (groupId, amount, requester) => {
+    const getGroupDetails = async (groupId, amount, requester, date) => {
         const { data } = await groupsAPI.getGroupDetails(groupId)
         if (!data?.data) {
             toast.error("Invalid request")
             return
         }
-        setRequest({ group: data?.data, amount, requester })
+        setRequest({ group: data?.data, amount, requester, request_date: date })
         setLoadingRequest(false)
     }
 
@@ -25,7 +25,7 @@ const RequestProvider = ({ children }) => {
                 toast.error("There was an error fetching the request details. Please refresh the page or request for another link.")
             }
             else {
-                getGroupDetails(data.group, data.amount, data.requester)
+                getGroupDetails(data.group, data.amount, data.requester, data.date)
             }
         }
         catch (e) {
@@ -35,9 +35,10 @@ const RequestProvider = ({ children }) => {
     }
 
     const clearRequest = () => setRequest({})
+    const markRequestAsSuccesful = () => setRequest({ ...request, successful: true })
 
     return (
-        <RequestContext.Provider value={{ clearRequest, request, loading: loadingRequest, loadRequest }}>
+        <RequestContext.Provider value={{ markRequestAsSuccesful, clearRequest, request, loading: loadingRequest, loadRequest }}>
             {children}
         </RequestContext.Provider>
     )

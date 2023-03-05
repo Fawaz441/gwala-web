@@ -1,9 +1,27 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
+import { useNavigate, useParams } from "react-router-dom"
 import { ReactComponent as Confetti } from "../../assets/images/confetti.svg"
+import { RequestContext } from "../../contexts"
 import Container from "../general/Container"
 import RequiresRequest from "../general/RequiresRequest"
 
 const Confirmation = () => {
+    const { request } = useContext(RequestContext)
+    const navigate = useNavigate()
+    const params = useParams()
+
+    useEffect(() => {
+        console.log('here....')
+        if (!params.paymentRequestInfo) {
+            navigate("/")
+        }
+        if (!request.successful) {
+            navigate(`/payment-requests/${params.paymentRequestInfo}/pay`)
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+
     return (
         <RequiresRequest>
             <Container>
