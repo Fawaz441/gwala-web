@@ -1,6 +1,6 @@
 import React from "react"
 import { Route, Routes } from "react-router-dom"
-import GroupDescription from "./components/payment/GroupDescription"
+// import GroupDescription from "./components/payment/GroupDescription"
 import GroupDetails from "./components/payment/GroupDetails"
 import Payment from "./pages/Payment"
 import routes from "./constants/routing"
@@ -17,7 +17,7 @@ const AppRoutes = () => {
             <Route path={routes.REJECT_REQUEST} element={<RequestDeclined />} />
             <Route path="/payment-requests/:paymentRequestInfo" element={<Payment />}>
                 <Route path={routes.PAYMENT_PAGE} element={<GroupDetails />} />
-                <Route path={routes.GROUP_DESCRIPTION} element={<GroupDescription />} />
+                {/* <Route path={routes.GROUP_DESCRIPTION} element={<GroupDescription />} /> */}
                 <Route path={routes.FLAG_REQUEST} element={<FlagRequest />} />
                 <Route path={routes.CONFIRMATION} element={<Confirmation />} />
             </Route>

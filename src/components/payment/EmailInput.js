@@ -2,7 +2,7 @@ import React from 'react'
 import isEmail from 'validator/lib/isEmail'
 import { useForm } from 'react-hook-form'
 
-const getInputClassNames = hasError => `py-3 text-primary text-[18px] px-4 h-[52px] block w-full border-2 border-gray-200 rounded-md focus:border-primary ${hasError ? "!border-[red] focus:!border-[red] !outline-red !text-[red]" : ""}`
+const getInputClassNames = hasError => `py-3 text-primary text-[18px] px-4 h-[52px] block w-full border-2 border-gray-200 rounded-md focus:border-primary ${hasError ? "!border-[red] focus:!border-[red] !outline-red font-sans800 !text-[red]" : ""}`
 
 const EmailInput = ({ proceed, hide }) => {
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -25,7 +25,7 @@ const EmailInput = ({ proceed, hide }) => {
                     class="mt-7 bg-white  rounded-xl shadow-lg cursor-default">
                     <div class="p-4 sm:p-7">
                         <div class="text-center">
-                            <p class="mt-2 text-xl text-primary font-semibold">
+                            <p class="mt-2 text-xl font-sans800 text-primary">
                                 Please enter in your email to proceed
                             </p>
                         </div>
@@ -33,7 +33,7 @@ const EmailInput = ({ proceed, hide }) => {
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div class="grid gap-y-4">
                                     <div>
-                                        <label htmlFor="email" class="block text-sm text-primary font-bold ml-1 mb-2">Email address</label>
+                                        <label htmlFor="email" class="block text-sm text-primary font-sans400 ml-1 mb-2">Email address</label>
                                         <div class="relative">
                                             <input
                                                 autoFocus
@@ -51,7 +51,7 @@ const EmailInput = ({ proceed, hide }) => {
                                     <div className='flex items-center justify-center'>
                                         <button
                                             type="submit"
-                                            className="mb-[13px] rounded-[30px] text-white flex items-center justify-center bg-primary font-sans400 text-[22px] h-[62px] w-[322px]">
+                                            className="mb-[13px] rounded-[30px] text-white flex items-center justify-center bg-primary font-sans400 text-[22px] h-[62px] w-[200px] lg:w-[322px]">
                                             Submit
                                         </button>
                                     </div>
