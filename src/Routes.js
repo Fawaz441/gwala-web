@@ -7,11 +7,15 @@ import routes from "./constants/routing"
 import FlagRequest from "./components/payment/FlagRequest"
 import Confirmation from "./components/payment/Confirmation"
 import NotFound from "./components/general/NotFound"
+import Home from "./pages/Home"
+import { RequestDeclined } from "./components/general/ExtraPages"
 
 const AppRoutes = () => {
     return (
         <Routes>
-            <Route path="/groups/:groupId" element={<Payment />}>
+            <Route index element={<Home />} />
+            <Route path={routes.REJECT_REQUEST} element={<RequestDeclined />} />
+            <Route path="/payment-requests/:paymentRequestInfo" element={<Payment />}>
                 <Route path={routes.PAYMENT_PAGE} element={<GroupDetails />} />
                 <Route path={routes.GROUP_DESCRIPTION} element={<GroupDescription />} />
                 <Route path={routes.FLAG_REQUEST} element={<FlagRequest />} />

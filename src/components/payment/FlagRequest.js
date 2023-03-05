@@ -1,34 +1,36 @@
 import React, { useContext } from "react"
+import { toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
 import groupsAPI from "../../api/groups"
 import { ReactComponent as BackArrow } from "../../assets/icons/back-arrow.svg"
 import { FLAG_REASONS } from "../../constants/payments"
-import { GroupContext } from "../../contexts"
+import { RequestContext } from "../../contexts"
 import Container from "../general/Container"
 import TextRadioInput from "../inputs/TextRadioInput"
 
 const FlagRequest = () => {
     const navigate = useNavigate()
-    const { group } = useContext(GroupContext)
+    const { request } = useContext(RequestContext)
     const [flagReason, setFlagReason] = React.useState(null)
     const [loading, setLoading] = React.useState(false)
 
     const flag = async () => {
         setLoading(true)
         try {
-            const message = FLAG_REASONS.find(reason => reason.id === flagReason)?.text
+            const reason = FLAG_REASONS.find(reason => reason.id === flagReason)
             await groupsAPI.addReport({
                 name: "-",
-                message: message || "-",
-                reportTypeEnum: 1,
-                groupId: group.groupId
+                message: reason?.text || "-",
+                reportTypeEnum: reason?.id,
+                groupId: request?.group?.groupId
             })
             setLoading(false)
-            alert("Request flagged successfully")
-            navigate(`/groups/${group.groupId}`)
+            toast.success("Request flagged successfully")
+            navigate(`/`)
         }
         catch (e) {
-            alert("There was an error...")
+            console.log(e)
+            toast.error("There was an error...")
             setLoading(false)
         }
     }

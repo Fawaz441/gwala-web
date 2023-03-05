@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html,body{
+  overflow-x:hidden;
+  padding:0;
+}
+
 @font-face {
   font-family: productSans400;
   src: url(./assets/fonts/ProductSans-Regular.ttf);

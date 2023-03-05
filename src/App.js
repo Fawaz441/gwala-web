@@ -1,18 +1,18 @@
-import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { GroupContext } from "./contexts";
+import RequestProvider from "./components/general/RequestProvider";
 import AppRoutes from "./Routes";
+import { Toaster } from 'react-hot-toast'
 
 function App() {
-  const [group, setGroup] = useState({})
   return (
-    <GroupContext.Provider value={{ group, setGroup }}>
-      <div className="App">
-        <BrowserRouter>
+    <div className="App">
+      <Toaster />
+      <BrowserRouter>
+        <RequestProvider>
           <AppRoutes />
-        </BrowserRouter>
-      </div>
-    </GroupContext.Provider>
+        </RequestProvider>
+      </BrowserRouter>
+    </div>
   );
 }
 

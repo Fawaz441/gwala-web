@@ -2,13 +2,12 @@ import React, { useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { ReactComponent as GroupCreator } from "../../assets/images/group-creator.svg"
 import { ReactComponent as BackArrow } from "../../assets/icons/back-arrow.svg"
-import routes from "../../constants/routing"
 import Container from "../general/Container"
-import { GroupContext } from "../../contexts"
+import { RequestContext } from "../../contexts"
 
 const GroupDescription = () => {
     const navigate = useNavigate()
-    const { group } = useContext(GroupContext)
+    const { group } = useContext(RequestContext)
     return (
         <Container>
             <div className='bg-white rounded-[30px] w-small mx-auto'>
